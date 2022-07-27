@@ -99,7 +99,8 @@ function realizarCalculoPersonalizado()
         imprevistosPorcentaje = 0, gastosFijosPorcentaje = 0, otrosGastosPorcentaje = 0;
     }
 
-    alert("Su presupuesto personalizado quedó conformado del siguiente modo:"+
+    alert(nombre + ", de acuerdo con sus ingresos de $" + montoIngresos+
+    "\nSu presupuesto personalizado quedó conformado del siguiente modo:"+
     "\n---------------------------------------------------------------------------"+
     "\nAhorros: " + ahorrosPorcentaje * 100 + " %" + " y equivale a $" +  montoIngresos * ahorrosPorcentaje + 
     "\nImprevistos: " + imprevistosPorcentaje * 100 + " %" + " y equivale a $" +  montoIngresos * imprevistosPorcentaje + 
@@ -108,6 +109,8 @@ function realizarCalculoPersonalizado()
     );
 
     console.log("Se realizó un presupuesto personalizado y quedó conformado del siguiente modo:"+
+    "\n---------------------------------------------------------------------------"+
+    "\nIngresos netos: $" +montoIngresos+
     "\n---------------------------------------------------------------------------"+
     "\nAhorros: " + ahorrosPorcentaje * 100 + " %" + " y equivale a $" +  montoIngresos * ahorrosPorcentaje + 
     "\nImprevistos: " + imprevistosPorcentaje * 100 + " %" + " y equivale a $" +  montoIngresos * imprevistosPorcentaje + 
@@ -120,7 +123,8 @@ function realizarCalculoEstandar()
 {
     montoIngresos = parseFloat(prompt("Por favor ingresa el monto total de tus ingresos en pesos argentinos, con numeros en el formato XXXX.XX","100000.00"));
 
-    alert("De acuerdo con nuestros expertos financieros se recomienda separar los ingresos del siguiente modo:"+
+    alert(nombre + ", de acuerdo con sus ingresos de $" + montoIngresos+
+    "\ny segun las recomendaciones de nuestros expertos financieros su presupuesto debe elaborarse del siguiente modo:"+
     "\nAhorros: " + ahorrosPorcentaje * 100 + " %" + " y equivale a $" +  montoIngresos * ahorrosPorcentaje + 
     "\nImprevistos: " + imprevistosPorcentaje * 100 + " %" + " y equivale a $" +  montoIngresos * imprevistosPorcentaje + 
     "\nGastos Fijos: " + gastosFijosPorcentaje * 100 + " %" + " y equivale a $" +  montoIngresos * gastosFijosPorcentaje + 
@@ -128,6 +132,8 @@ function realizarCalculoEstandar()
     );
 
     console.log("Se realizó un presupuesto estándar y quedó conformado del siguiente modo:"+
+    "\n---------------------------------------------------------------------------"+
+    "\nIngresos netos: $" +montoIngresos+
     "\n---------------------------------------------------------------------------"+
     "\nAhorros: " + ahorrosPorcentaje * 100 + " %" + " y equivale a $" +  montoIngresos * ahorrosPorcentaje + 
     "\nImprevistos: " + imprevistosPorcentaje * 100 + " %" + " y equivale a $" +  montoIngresos * imprevistosPorcentaje + 
