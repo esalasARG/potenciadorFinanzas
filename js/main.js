@@ -2,10 +2,104 @@ let opcion = 0;
 let nombre = "";
 let ahorrosPorcentaje= 0.4, imprevistosPorcentaje = 0.2, gastosFijosPorcentaje = 0.25, otrosGastosPorcentaje = 0.15;
 let montoIngresos = 0;
+let tiposGastos = [];
+let gastos = [];
+let idGasto = 1;
+
+
+class TipoGasto 
+{
+    constructor(id, descripcion) 
+    {
+        this.id  = parseInt(id);
+        this.descripcion  = descripcion;
+    }
+
+    getTipoGasto() 
+    {
+        return this.id + " - " + this.descripcion + "\n";
+    }
+}
+
+class Gasto 
+{
+    constructor( tipoGasto, comentario, montoGasto ) 
+    {
+        this.id  = getNewIdGasto();
+        this.fecha = new Date();
+        let tipoGasto1 =  tiposGastos.find(tipo => tipo.id == tipoGasto);
+        console.log(tipoGasto1)
+        this.tipo = tipoGasto1;
+        this.comentario  = comentario;
+        this.monto = parseFloat(montoGasto);
+    }
+
+    getGasto() 
+    {
+        return "\n" + this.id + " - " + this.fecha.toLocaleString() + "\nTipo de Gasto: " + this.tipo.descripcion + "\nComentario: " + this.comentario + "\n$" + this.monto + "\n";
+    }
+}
+
+function getNewIdGasto()
+{
+    idGasto++;
+    return idGasto-1;
+}
 
 function reiniciarVariables()
 {
     montoIngresos = 0, ahorrosPorcentaje= 0.4, imprevistosPorcentaje = 0.2, gastosFijosPorcentaje = 0.25, otrosGastosPorcentaje = 0.15;
+}
+
+function cargarTiposGastos()
+{
+    //a futuro acá podemos cargar los tipos de gasto desde una DB o un archivo
+    let tipo1 = new TipoGasto(1,"Mercado");
+    let tipo2 = new TipoGasto(2,"Gastos Fijos");
+    let tipo3 = new TipoGasto(3,"Cuidado Personal");
+    let tipo4 = new TipoGasto(4,"Educación");
+    let tipo5 = new TipoGasto(5,"Otros Gastos");
+
+    tiposGastos.push(tipo1);
+    tiposGastos.push(tipo2);
+    tiposGastos.push(tipo3);
+    tiposGastos.push(tipo4);
+    tiposGastos.push(tipo5);
+
+    console.log("Se cargaron correctamente los tipos de gastos");
+    console.log(tiposGastos);
+    console.log(getTiposGastos());
+}
+
+function getTiposGastos()
+{
+    let cadenaTipos = "";
+
+    for(const tipoGasto of tiposGastos)
+    {
+        cadenaTipos += tipoGasto.getTipoGasto();
+    }
+
+    return cadenaTipos;
+}
+
+function mostrarGastos()
+{
+    if(gastos.length == 0)
+    {
+        alert("Todavía no hay gastos registrados")
+    }
+    else
+    {
+        let cadenaGastos = "";
+
+        for(const gasto of gastos)
+        {
+            cadenaGastos += gasto.getGasto();
+        }
+    
+        alert("Los gastos registrados hasta este momento son:\n" + cadenaGastos);
+    }
 }
 
 function mostrarBienvenida()
@@ -27,7 +121,9 @@ function mostrarMenu()
         "\n--------------------------------------------"+
         "\n1.Generar presupuesto completo personalizado"+
         "\n2.Generar presupuesto estándar"+
-        "\n3.Salir"+
+        "\n3.Registrar un gasto"+
+        "\n4.Mostrar gastos registrados"+
+        "\n0.Salir"+
         "\n--------------------------------------------"+
         "\nPor favor ingresa el numero de opción","1"));
 }
@@ -150,7 +246,25 @@ function mostrarDespedida()
     console.log("------------------------------------"); 
 }
 
+function cargarGasto()
+{
+    let tipoGasto =  parseInt(prompt("Por favor ingresa el nro asociado al tipo de gasto de acuerdo a la siguiente lista:\n"+ getTiposGastos(),"1"));
+    let comentario = prompt("Por favor ingresa un comentario que permita identificar a que esta relacionado el gasto","Compra Coto");
+    let monto = parseFloat(prompt("Por favor ingresa el monto en pesos del gasto con dos decimales en el formato XXX.XX","100.00"));
+
+    let gasto = new Gasto(tipoGasto, comentario, monto);
+
+    console.log(gasto);
+
+    gastos.push(gasto);
+
+    console.log(gastos);
+}
+
+//Comienzo del MAIN
+
 mostrarBienvenida();
+cargarTiposGastos();
 
 do 
 {
@@ -165,8 +279,16 @@ do
         case 2:
             realizarCalculoEstandar();
         break;
-            
+
         case 3:
+            cargarGasto();
+        break;
+
+        case 4:
+            mostrarGastos();
+        break;
+            
+        case 0:
             mostrarDespedida();
         break;
 
@@ -177,4 +299,4 @@ do
 
     reiniciarVariables();
 
-} while (opcion != 3)
+} while (opcion != 0)
