@@ -1,0 +1,31 @@
+@mixin flexRowCenter{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flexColumnCenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    justify-content: center;
+}
+
+@mixin containers{
+    padding: 10px;
+    margin: 10px;
+}
+
+@mixin sombras{
+    box-shadow: 0 0 20px 0 $colorSombras, 0 5px 5px 0 $colorSombras;
+}
+
+@mixin dicountLabel{
+    font-weight: bolder;
+    padding: 10px 20px;
+    font-size: large;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+}

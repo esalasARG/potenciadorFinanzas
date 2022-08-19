@@ -1,0 +1,240 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import "variables", "mixins";
+
+html{
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+
+    body{
+        text-align: center;
+        color: $colorFuentes;
+        background: $backgroundColor;
+
+        h1{
+            font-size: 1.5rem;
+        }
+
+        h2{
+            font-size: 1.2rem;
+        }
+
+        h3{
+            font-size: 1.1rem;
+        }
+    
+        p {
+            font-size: 1rem;
+        }
+        
+        a{
+            display: inline;
+            text-decoration: none;
+            font-size: 1.2rem;
+            &:visited{
+                color: $colorFuentes;
+            }
+        }
+
+        ul{
+            padding: 0;
+            margin: 0;
+        }
+        
+    }
+}
+
+/*LAYOUT*/
+
+.gridLayout{
+    display: grid;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+    grid-template-rows: 150px 10fr 500px; 
+    grid-template-columns: auto;
+    width: 100%;
+    min-width: 200px;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+@media screen and (max-width: 1024px) {
+	.gridLayout {
+        grid-template-areas:
+        "header"
+        "main"
+        "footer";
+        grid-template-rows: 133px 3fr 600px; 
+    }
+}
+@media screen and (max-width: 768px) {
+	.gridLayout {
+        grid-template-areas:
+        "header"
+        "main"
+        "footer";
+        grid-template-rows: 116px 3fr 800px;
+    }
+}
+
+header{
+    grid-area: header;
+}
+
+section#main{
+    grid-area: main;
+    @include flexColumnCenter;
+}
+
+footer{
+    grid-area: footer;
+}
+
+.containerMain{
+    display: flex;
+    justify-content:space-evenly;
+    width: 70%;
+    flex-flow: row wrap;
+}
+
+.parallax {
+    background-image: url("../img/parallax.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.espaciador{
+    height: 50px;
+}
+
+.navMenu{
+    z-index: 500;
+    @include sombras;
+    ul{
+        list-style: none;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    a{
+        font-size: 1.8rem;
+        &:hover {
+            background-color: $colorHover;
+        }
+    }
+}
+@media screen and (max-width: 1024px) {
+    .navMenu a{
+        font-size: 1.5rem;
+    }
+}
+
+.logo{
+    width: 8rem;
+
+    &:hover{
+        background-color: transparent;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .logo{
+        width: 7rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    .logo{
+        width: 6rem;
+    }
+}
+
+/*BARRA DE NAVEGACION INFERIOR*/
+
+.navfooter{
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    ul{
+        list-style: none;
+    }
+
+    li {
+        display: inline-block;
+    }
+    
+    a{
+        color: $colorFuentes;
+        transition: .3s background-color;
+        &:hover {
+            color: aqua;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .navfooter li {
+        @include flexRowCenter;
+    }
+}
+
+.copyright{
+    padding: 40px;
+}
+
+.width80{
+    width:80%;
+}
+
+.notActive { 
+    pointer-events: none; 
+    cursor: default;
+} 
+
+.popover{
+    color: $colorSecundarioFuentes;
+    @include sombras;
+}
+
+.modal{
+    color: $colorSecundarioFuentes;
+    @include sombras;
+}
+
+.boton:hover,.boton:active,.boton:focus {
+    background: #43a090;
+    color: $colorFuentes;
+}
+
+
+/*FORMS*/
+
+.form{
+    position: relative;
+    z-index: 1;
+    background: $backgroundForm;
+    width: 70%;
+    margin: 10px 10px;
+    padding: 25px;
+    text-align: center;
+    
+    @include sombras;
+
+    input, textarea, select {
+        font-size: 1rem;
+        width: 90%;
+        border: 0;
+        margin: 5px auto;
+        padding: 5px;
+        text-align: center;
+        display: block;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .form{
+        padding: 15px;
+    }
+}
+

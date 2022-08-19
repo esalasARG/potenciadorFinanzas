@@ -1,88 +1,13 @@
-let opcion = 0;
-let nombre = "";
-let ahorrosPorcentaje= 0.4, imprevistosPorcentaje = 0.2, gastosFijosPorcentaje = 0.25, otrosGastosPorcentaje = 0.15;
-let montoIngresos = 0;
-let tiposGastos = [];
-let gastos = [];
-let idGasto = 1;
+//agrego estas lineas para manejar popovers
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
+//Cargamos los datos de base
+cargarTiposGastos();
+setearFormularioGastos();
+cargarDatosDeLocalStorage();
 
-class TipoGasto 
-{
-    constructor(id, descripcion) 
-    {
-        this.id  = parseInt(id);
-        this.descripcion  = descripcion;
-    }
-
-    getTipoGasto() 
-    {
-        return this.id + " - " + this.descripcion + "\n";
-    }
-}
-
-class Gasto 
-{
-    constructor( tipoGasto, comentario, montoGasto ) 
-    {
-        this.id  = getNewIdGasto();
-        this.fecha = new Date();
-        let tipoGasto1 =  tiposGastos.find(tipo => tipo.id == tipoGasto);
-        console.log(tipoGasto1)
-        this.tipo = tipoGasto1;
-        this.comentario  = comentario;
-        this.monto = parseFloat(montoGasto);
-    }
-
-    getGasto() 
-    {
-        return "\n" + this.id + " - " + this.fecha.toLocaleString() + "\nTipo de Gasto: " + this.tipo.descripcion + "\nComentario: " + this.comentario + "\n$" + this.monto + "\n";
-    }
-}
-
-function getNewIdGasto()
-{
-    idGasto++;
-    return idGasto-1;
-}
-
-function reiniciarVariables()
-{
-    montoIngresos = 0, ahorrosPorcentaje= 0.4, imprevistosPorcentaje = 0.2, gastosFijosPorcentaje = 0.25, otrosGastosPorcentaje = 0.15;
-}
-
-function cargarTiposGastos()
-{
-    //a futuro acá podemos cargar los tipos de gasto desde una DB o un archivo
-    let tipo1 = new TipoGasto(1,"Mercado");
-    let tipo2 = new TipoGasto(2,"Gastos Fijos");
-    let tipo3 = new TipoGasto(3,"Cuidado Personal");
-    let tipo4 = new TipoGasto(4,"Educación");
-    let tipo5 = new TipoGasto(5,"Otros Gastos");
-
-    tiposGastos.push(tipo1);
-    tiposGastos.push(tipo2);
-    tiposGastos.push(tipo3);
-    tiposGastos.push(tipo4);
-    tiposGastos.push(tipo5);
-
-    console.log("Se cargaron correctamente los tipos de gastos");
-    console.log(tiposGastos);
-    console.log(getTiposGastos());
-}
-
-function getTiposGastos()
-{
-    let cadenaTipos = "";
-
-    for(const tipoGasto of tiposGastos)
-    {
-        cadenaTipos += tipoGasto.getTipoGasto();
-    }
-
-    return cadenaTipos;
-}
-
+/* CODIGO VIEJO ANTES DE LA MAGIA DE DOM Y EVENTOS
 function mostrarGastos()
 {
     if(gastos.length == 0)
@@ -244,6 +169,8 @@ function mostrarDespedida()
     console.log("------------------------------------"); 
     console.log("Se finalizó la sesión de trabajo de " + nombre);
     console.log("------------------------------------"); 
+    console.log("El detalle de gastos registrados en esta sesión es:\n"); 
+    console.log(gastos);
 }
 
 function cargarGasto()
@@ -254,15 +181,16 @@ function cargarGasto()
 
     let gasto = new Gasto(tipoGasto, comentario, monto);
 
-    console.log(gasto);
+    
 
     gastos.push(gasto);
-
-    console.log(gastos);
+    console.log("Se cargo un nuevo Gasto: " + gasto);
 }
 
-//Comienzo del MAIN
+*/
 
+//NO MAS ALERTS NI PROMPTS
+/*
 mostrarBienvenida();
 cargarTiposGastos();
 
@@ -300,3 +228,4 @@ do
     reiniciarVariables();
 
 } while (opcion != 0)
+*/
