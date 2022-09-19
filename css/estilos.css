@@ -8,9 +8,9 @@ html {
     color: black;
     background: linear-gradient(0deg, #aaaaaa 0%, #dddddd 23%, white 100%); }
     html body h1 {
-      font-size: 1.5rem; }
+      font-size: 1.8rem; }
     html body h2 {
-      font-size: 1.2rem; }
+      font-size: 1.5rem; }
     html body h3 {
       font-size: 1.1rem; }
     html body p {
@@ -38,12 +38,10 @@ html {
 
 @media screen and (max-width: 1024px) {
   .gridLayout {
-    grid-template-areas: "header" "main" "footer";
     grid-template-rows: 133px 3fr 600px; } }
 
 @media screen and (max-width: 768px) {
   .gridLayout {
-    grid-template-areas: "header" "main" "footer";
     grid-template-rows: 116px 3fr 800px; } }
 
 header {
@@ -59,11 +57,19 @@ section#main {
 footer {
   grid-area: footer; }
 
-.containerMain {
+.containerColumn {
   display: flex;
-  justify-content: space-evenly;
-  width: 70%;
-  flex-flow: row wrap; }
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; }
+
+.containerRow {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
 
 .parallax {
   background-image: url("../img/parallax.jpg");
@@ -131,19 +137,15 @@ footer {
 .copyright {
   padding: 40px; }
 
-.width80 {
-  width: 80%; }
-
 .notActive {
   pointer-events: none;
   cursor: default; }
 
-.popover {
-  color: #008316;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.341), 0 5px 5px 0 rgba(0, 0, 0, 0.341); }
+.width80 {
+  width: 80%; }
 
-.modal {
-  color: #008316;
+.popover {
+  color: #de6700;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.341), 0 5px 5px 0 rgba(0, 0, 0, 0.341); }
 
 .boton:hover, .boton:active, .boton:focus {
@@ -155,20 +157,68 @@ footer {
   position: relative;
   z-index: 1;
   background: rgba(100, 100, 100, 0.568);
-  width: 70%;
+  width: 40%;
   margin: 10px 10px;
   padding: 25px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.341), 0 5px 5px 0 rgba(0, 0, 0, 0.341); }
   .form input, .form textarea, .form select {
     font-size: 1rem;
-    width: 90%;
+    width: 50%;
     border: 0;
     margin: 5px auto;
     padding: 5px;
     text-align: center;
     display: block; }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .form {
-    padding: 15px; } }
+    width: 70%; } }
+
+.cardResumen {
+  background-color: rgba(122, 143, 144, 0.69);
+  width: 400px;
+  height: 350px;
+  padding: 30px 40px;
+  margin: 30px;
+  position: relative;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.341), 0 5px 5px 0 rgba(0, 0, 0, 0.341); }
+  .cardResumen:hover {
+    transform: translate(-1px, 1px);
+    transform: rotate(-0.2deg);
+    transition: 1000ms;
+    animation-timing-function: ease-in-out; }
+
+@media screen and (max-width: 768px) {
+  .cardResumen {
+    width: 300px;
+    padding: 7.5px 10px;
+    height: 200px; } }
+
+.cardMain {
+  background-color: rgba(92, 119, 255, 0.589);
+  width: 95%;
+  height: 190px;
+  padding: 30px 40px;
+  margin: 30px;
+  position: relative;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.341), 0 5px 5px 0 rgba(0, 0, 0, 0.341); }
+  .cardMain:hover {
+    transform: translate(-1px, 1px);
+    transform: rotate(-0.2deg);
+    transition: 1000ms;
+    animation-timing-function: ease-in-out; }
+
+.cardFifty {
+  background-color: rgba(217, 255, 0, 0.401);
+  width: 45%;
+  height: 160px;
+  padding: 30px 40px;
+  margin: 30px;
+  position: relative;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.341), 0 5px 5px 0 rgba(0, 0, 0, 0.341); }
+  .cardFifty:hover {
+    transform: translate(-1px, 1px);
+    transform: rotate(-0.2deg);
+    transition: 1000ms;
+    animation-timing-function: ease-in-out; }

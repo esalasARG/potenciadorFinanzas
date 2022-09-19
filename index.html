@@ -22,16 +22,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="">Gastos</a>
+                        <a id="menuHome" class="nav-link active" href="#">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Ingresos</a>
+                        <a id="menuGastos" class="nav-link" href="#">GASTOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Reportes</a>
+                        <a id="menuResumen" class="nav-link" href="#">RESUMEN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Ajustes</a>
+                        <a id="menuPresupuesto" class="nav-link" href="#">PRESUPUESTO</a>
                     </li>
                 </ul>
                 </div>
@@ -39,52 +39,8 @@
         </nav>
     </header>  
 
-    <section id="main" class="parallax">
-        <span class="espaciador"></span>
-        <h1>Carga de gastos</h1>
-        <span class="espaciador"></span>
-
-        <form id="formularioGastos" class="form" action="" method="POST">
-            <h2>Por favor ingresa los siguientes datos:</h2>
-            <div>
-                <label for="fecha">Fecha</label>
-                <input type="date" id="fecha" name="fecha" required placeholder="Fecha de gasto"> 
-            </div>
-            <div>
-                <label for="tipo">Tipo de Gasto</label>
-                <select  required id="tipoGasto" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Seleccione un tipo de gasto</option>
-                </select>
-            </div>
-            <div>
-                <label for="monto">Monto</label>
-                <input type="number" pattern="^[0-9]*(\.[0-9]{1,2})*$" id="monto" name="monto" required placeholder="100.00"> 
-            </div>
-            <div>
-                <label for="comentarios">Tus comentarios</label>
-                <input type="text" id="comentario" name="comentario" required placeholder="Detalle del gasto"> 
-            </div>
-            <div>
-                <input type="submit" value="Guardar" class="boton" id="botonGuardar">
-            </div>
-        </form>
-        <span class="espaciador"></span>
-        <div>
-            <h2>Tus Gastos</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Tipo Gasto</th>
-                        <th scope="col">Monto</th>
-                        <th scope="col">Comentarios</th>
-                    </tr>
-                </thead>
-                <tbody id="tablaGastos">
-                </tbody>
-            </table>
-        </div>
+    <section id="containerMain" class="parallax containerMain">
+        
     </section>
     
     <footer>
@@ -92,19 +48,25 @@
         <hr>
         <ul class="navfooter">
             <li>
-                <a tabindex="0" data-bs-placement="top" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Cargando gastos" data-bs-content="Solamente tenes que igresar a la sección gastos, completar los datos y guardar">¿Como cargo gastos?</a>
+                <a tabindex="1" data-bs-placement="top" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Primeros pasos" data-bs-content="Solamente tenes que ingresar a la sección home y seguir las instrucciones">¿Como inicio?</a>
             </li>
             <li>
                 <a href="#" class="notActive">|</a>
             </li>
             <li>
-                <a tabindex="1" data-bs-placement="top" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Cargando Ingresos" data-bs-content="Solamente tenes que igresar a la sección ingresos, completar los datos y guardar">¿Como cargo ingresos?</a>
+                <a tabindex="2" data-bs-placement="top" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Configurar presupuesto" data-bs-content="Ingresa a la sección Presupuesto y configura los valores para los ingresos y para cada tipo de cuenta">¿Como configuro el presupuesto?</a>
+            </li> 
+            <li>
+                <a href="#" class="notActive">|</a>
+            </li>
+            <li>
+                <a tabindex="3" data-bs-placement="top" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Cargando gastos" data-bs-content="Solamente tenes que igresar a la sección gastos, completar los datos y guardar">¿Como cargo gastos?</a>
             </li>
             <li>
                 <a href="#" class="notActive">|</a>
             </li>
             <li>
-                <a tabindex="2" data-bs-placement="top" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Visualizando reportes" data-bs-content="Es simple, ingresa a la sección de reportes, seleccioná el reporte que sea de tu interes y listo">¿Como veo reportes?</a>
+                <a tabindex="4" data-bs-placement="top" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Visualizando resumen" data-bs-content="Ingresa a la sección resumen y visualiza el estado de tus cuentas de acuerdo al presupuesto configurado">¿Como veo mi resumen financiero?</a>
             </li>
         </ul>
         <div>
@@ -117,7 +79,9 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Luxon -->
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.4.0/build/global/luxon.min.js"></script>
-    <script src="js/clases.js"></script>
+    <script src="js/modelo.js"></script>
+    <script src="js/controlador.js"></script>
+    <script src="js/vista.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
