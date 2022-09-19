@@ -43,7 +43,8 @@ async function cargarTiposGastos()
     tiposGastos = [];
 
     //cargamos los datos de un JSON local, a futuro se van a obtener de una base de datos
-    const urlJSON ="/data/tiposGastos.json"
+    //Subimos el JSON a GITHUB para usarlo como API
+    const urlJSON ="https://esalasarg.github.io/potenciadorFinanzas/data/tiposGastos.json"
     const response = await fetch(urlJSON)
     const data = await response.json()
     tiposGastos = data;
