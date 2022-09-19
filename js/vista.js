@@ -23,10 +23,21 @@ function setearTitulo(titulo)
     `;
 }
 
+//para setear la fecha de hoy en el defaultValue de un input date
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
 //Prepara todos los componentes para utilizar la sección de Carga de Gastos
 function setearFormularioGastos()
 {
     let select = document.getElementById('tipoGasto');
+    let fecha = document.getElementById('fecha');
+
+    //ponemos la fecha de hoy por defecto
+    fecha.defaultValue = new Date().toDateInputValue();
 
     console.log(tiposGastos); 
 
@@ -246,7 +257,11 @@ function guardarConfiguracion(e)
     let otrosGastos = document.getElementById("otrosGastos").value;
     let gastosFijos = document.getElementById("gastosFijos").value;
 
-    if((ahorros + mercado + otrosGastos + gastosFijos) != 100)
+    let suma = parseFloat(ahorros) + parseFloat(mercado) + parseFloat(otrosGastos) + parseFloat(gastosFijos)
+
+    console.log(suma);
+
+    if(suma != 100)
     {
         Swal.fire({
             position: 'center',
@@ -254,6 +269,8 @@ function guardarConfiguracion(e)
             title: 'Los porcertajes de ahorros, mercado, gastos fijos y otros gastos deben sumar en total 100%. Por favor corregir y volver a intentar',
             showConfirmButton: true
         })
+
+        
     }
     else
     {
