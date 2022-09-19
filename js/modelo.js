@@ -43,7 +43,7 @@ async function cargarTiposGastos()
     tiposGastos = [];
 
     //cargamos los datos de un JSON local, a futuro se van a obtener de una base de datos
-    const urlJSON ="../data/tiposGastos.json"
+    const urlJSON ="/data/tiposGastos.json"
     const response = await fetch(urlJSON)
     const data = await response.json()
     tiposGastos = data;
