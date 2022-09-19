@@ -12,11 +12,11 @@ html{
         background: $backgroundColor;
 
         h1{
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
 
         h2{
-            font-size: 1.2rem;
+            font-size: 1.5rem;
         }
 
         h3{
@@ -61,19 +61,11 @@ html{
 }
 @media screen and (max-width: 1024px) {
 	.gridLayout {
-        grid-template-areas:
-        "header"
-        "main"
-        "footer";
         grid-template-rows: 133px 3fr 600px; 
     }
 }
 @media screen and (max-width: 768px) {
 	.gridLayout {
-        grid-template-areas:
-        "header"
-        "main"
-        "footer";
         grid-template-rows: 116px 3fr 800px;
     }
 }
@@ -91,12 +83,16 @@ footer{
     grid-area: footer;
 }
 
-.containerMain{
-    display: flex;
-    justify-content:space-evenly;
-    width: 70%;
-    flex-flow: row wrap;
+.containerColumn{
+    @include flexColumnCenter;
+    width: 100%;
 }
+
+.containerRow{
+    @include flexRowCenter;
+    width: 100%;
+}
+
 
 .parallax {
     background-image: url("../img/parallax.jpg");
@@ -184,21 +180,16 @@ footer{
     padding: 40px;
 }
 
-.width80{
-    width:80%;
-}
-
 .notActive { 
     pointer-events: none; 
     cursor: default;
 } 
 
-.popover{
-    color: $colorSecundarioFuentes;
-    @include sombras;
+.width80{
+    width:80%;
 }
 
-.modal{
+.popover{
     color: $colorSecundarioFuentes;
     @include sombras;
 }
@@ -215,7 +206,7 @@ footer{
     position: relative;
     z-index: 1;
     background: $backgroundForm;
-    width: 70%;
+    width: 40%;
     margin: 10px 10px;
     padding: 25px;
     text-align: center;
@@ -224,7 +215,7 @@ footer{
 
     input, textarea, select {
         font-size: 1rem;
-        width: 90%;
+        width: 50%;
         border: 0;
         margin: 5px auto;
         padding: 5px;
@@ -232,9 +223,66 @@ footer{
         display: block;
     }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
     .form{
-        padding: 15px;
+        width: 70%;
     }
 }
+
+.cardResumen{
+    background-color: $backgroundCards;
+    width: 400px;
+    height: 350px;
+    padding: 30px 40px;
+    margin: 30px;
+    position: relative;
+    @include sombras;
+    &:hover{
+        transform: translate(-1px,1px);
+        transform: rotate(-0.2deg);
+        transition: 1000ms;
+        animation-timing-function: ease-in-out;
+    }
+}
+@media screen and (max-width: 768px) {
+    .cardResumen{
+        width: 300px;
+        padding: 7.5px 10px;
+        height: 200px;
+    }
+}
+
+
+.cardMain{
+    background-color: $backgroundCardMain;
+    width: 95%;
+    height: 190px;
+    padding: 30px 40px;
+    margin: 30px;
+    position: relative;
+    @include sombras;
+    &:hover{
+        transform: translate(-1px,1px);
+        transform: rotate(-0.2deg);
+        transition: 1000ms;
+        animation-timing-function: ease-in-out;
+    }
+}
+
+.cardFifty{
+    background-color: $backgroundCardFifty;
+    width: 45%;
+    height: 160px;
+    padding: 30px 40px;
+    margin: 30px;
+    position: relative;
+    @include sombras;
+    &:hover{
+        transform: translate(-1px,1px);
+        transform: rotate(-0.2deg);
+        transition: 1000ms;
+        animation-timing-function: ease-in-out;
+    }
+}
+
 
