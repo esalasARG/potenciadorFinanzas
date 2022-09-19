@@ -246,17 +246,30 @@ function guardarConfiguracion(e)
     let otrosGastos = document.getElementById("otrosGastos").value;
     let gastosFijos = document.getElementById("gastosFijos").value;
 
-    almacenarConfiguración(usuario, ingresos, ahorros, mercado, otrosGastos, gastosFijos);
+    if((ahorros + mercado + otrosGastos + gastosFijos) != 100)
+    {
+        Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Los porcertajes de ahorros, mercado, gastos fijos y otros gastos deben sumar en total 100%. Por favor corregir y volver a intentar',
+            showConfirmButton: true
+        })
+    }
+    else
+    {
+        
+        almacenarConfiguración(usuario, ingresos, ahorros, mercado, otrosGastos, gastosFijos);
     
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Se guardó correctamente la configuración',
-        showConfirmButton: false,
-        timer: 2000
-    })
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Se guardó correctamente la configuración',
+            showConfirmButton: false,
+            timer: 2000
+        })
 
-    cargarMenuPresupuesto();
+        cargarMenuPresupuesto();
+    }
 }
 
 function cargarMenuPresupuesto()
